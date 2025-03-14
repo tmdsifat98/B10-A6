@@ -42,7 +42,6 @@ const categoryData = async (element) => {
 
   if (data.data) {
     showData(data.data);
-    document.getElementById("spinner").style.display = "none";
   }
 };
 categoryData("cat");
@@ -61,7 +60,6 @@ const showData = async (elements) => {
     dataContainer.append(div);
   }
   elements.forEach((element) => {
-    console.log(element);
     const div = document.createElement("div");
     div.innerHTML = `
          <div class="card bg-base-100 p-3 border-2 shadow-xl">
@@ -79,24 +77,58 @@ const showData = async (elements) => {
         <div class="flex justify-between border-t-2">
             <div class="px-6 rounded-xl py-2 border-2 mt-2"><i class="fas fa-thumbs-up"></i></div>
             <div class="px-6 rounded-xl py-2 border-2 mt-2 text-primary font-bold">Adopt</div>
-            <div class="px-6 rounded-xl py-2 border-2 mt-2 text-primary font-bold">Details</i></div>
+            <button class="modal-btn px-6 rounded-xl py-2 border-2 mt-2 text-primary font-bold">Details</i></button>
         </div>
       </div>
     </div>
     `;
-
     dataContainer.append(div);
   });
+  const allbtn = document.querySelectorAll(".modal-btn");
+  for (let btn of allbtn) {
+    btn.addEventListener("click", (event) => {
+      const parent = event.target.parentNode.parentNode.parentNode;
+      const parent2 = event.target.parentNode.parentNode;
+      const modalShow = document.getElementById("modal-show");
+      modalShow.innerHTML = "";
+      const div = document.createElement("div");
+      console.log();
+      div.innerHTML = `
+              <div class="card bg-base-100 w-96 p-3 border-2 shadow-xl"> 
+                <img  class="rounded-md" src="${parent.childNodes[1].src}" alt="Shoes" />
+                  <div class="flex flex-col  flex-wrap gap-2">
+                    <h2 class="card-title my-3 text-3xl">${parent2.childNodes[1].innerText}</h2>
+                    <p class="flex gap-2 items-center text-xl"><i class="fas fa-qrcode"></i> <span>${parent2.childNodes[2].textContent}</span></p>
+                    <p class="flex gap-2 items-center text-xl"><i class="fas fa-calendar"></i> <span>Birth: 2024</span></p>
+                    <p class="flex gap-2 items-center text-xl"><i class="fas fa-mercury"></i> <span>Gender: gender</span></p>
+                    <p class="flex gap-2 items-center text-xl"><i class="fas fa-dollar-sign"></i> <span>Price : price$</span></p>
+                    <div>
+                      <div>
+                          <h3>Details Information</h3>
+                          <p></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        `;
+      modalShow.appendChild(div);
+    });
+  }
 };
+
 // {
-//     "petId": 6,
-//     "breed": "Bengal",
-//     "category": "Cat",
-//     "price": 950,
-//     "image": "https://i.ibb.co.com/PFbWMGk/pet-6.jpg",
-//     "gender": "Male",
-//     "pet_details": "This playful male Bengal cat, born on November 10, 2022, is full of energy and loves to climb and engage with toys. Fully vaccinated and priced at $950, he's ideal for active households looking for a curious and adventurous feline friend.",
-//     "vaccinated_status": "Fully",
-//     "pet_name": "Leo"
+//     "status": true,
+//     "message": "successfully fetched pet data using id 6",
+//     "petData": {
+//         "petId": 6,
+//         "breed": "Bengal",
+//         "category": "Cat",
+//         "price": 950,
+//         "image": "https://i.ibb.co.com/PFbWMGk/pet-6.jpg",
+//         "gender": "Male",
+//         "pet_details": "This playful male Bengal cat, born on November 10, 2022, is full of energy and loves to climb and engage with toys. Fully vaccinated and priced at $950, he's ideal for active households looking for a curious and adventurous feline friend.",
+//         "vaccinated_status": "Fully",
+//         "pet_name": "Leo"
+//     }
 // }
 loadCategories();

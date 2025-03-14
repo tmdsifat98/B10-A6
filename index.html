@@ -12,7 +12,13 @@
       rel="stylesheet"
     />
     <!-- font awesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- tailwind and daisy cdn -->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css"
@@ -28,7 +34,6 @@
     </style>
   </head>
   <body class="w-11/12 mx-auto font-lato">
-    
     <header>
       <!-- navbar starts here -->
       <div class="navbar">
@@ -45,9 +50,9 @@
           </ul>
         </div>
         <div class="navbar-end">
-          <div class=" px-3 py-2 border-2 rounded-full"><i
-            class="far fa-user"
-          ></i></div>
+          <div class="px-3 py-2 border-2 rounded-full">
+            <i class="far fa-user"></i>
+          </div>
         </div>
       </div>
       <!-- hero section -->
@@ -57,7 +62,7 @@
             Bringing Families Together 🔥
           </p>
           <h1 class="font-bold text-6xl my-6 text-center">
-            Your Path to Adoption Starts Here 
+            Your Path to Adoption Starts Here
           </h1>
           <p class="text-center text-gray-500 w-3/4 mb-5">
             It is a long established fact that a reader will be distracted by
@@ -93,10 +98,19 @@
         <div
           id="data-container"
           class="grid grid-cols-3 col-span-3 relative gap-6"
-        ><div class="absolute z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-x-1/2" id="spinner"><span class="loading loading-spinner text-neutral"></span></div></div>
+        >
+          <div
+            class="absolute z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            id="spinner"
+          >
+            <span class="loading loading-spinner text-neutral"></span>
+          </div>
+        </div>
       </section>
     </main>
-    
+    <section id="modal-show" >
+      
+    </section>
     <script src="./script/index.js"></script>
   </body>
 </html>

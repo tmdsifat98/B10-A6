@@ -37,20 +37,32 @@ const showCategory = (categories) => {
 
 const categoryData = async (element) => {
   const response = await fetch(`
-    https://openapi.programming-hero.com/api/peddy/category/${element} `);
+    https://openapi.programming-hero.com/api/peddy/category/${element}`);
   const data = await response.json();
-  showData(data.data);
+
+  if (data.data) {
+    showData(data.data);
+    document.getElementById("spinner").style.display = "none";
+  }
 };
+categoryData("cat");
+
 const showData = async (elements) => {
-    const dataContainer = document.getElementById("data-container");
-    
-    if(elements.length<1){
-        const div=document.createElement('div')
-    }
+  const dataContainer = document.getElementById("data-container");
+  dataContainer.innerHTML = "";
+  if (elements.length < 1) {
+    const div = document.createElement("div");
+    div.classList.add("col-span-3");
+    div.innerHTML = `<div class="flex flex-col justify-center items-center">
+        <img src="./images/error.webp" alt="">
+        <h1 class="text-4xl font-bold mb-5">No Information Available</h1>
+        <p class="w-2/3 text-xl text-gray-700 text-center mx-auto">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
+    </div>`;
+    dataContainer.append(div);
+  }
   elements.forEach((element) => {
     console.log(element);
     const div = document.createElement("div");
-    div.innerHTML = "";
     div.innerHTML = `
          <div class="card bg-base-100 p-3 border-2 shadow-xl">
       <img
@@ -72,6 +84,7 @@ const showData = async (elements) => {
       </div>
     </div>
     `;
+
     dataContainer.append(div);
   });
 };
